@@ -4,11 +4,17 @@
 ### MENU DE ESCOLHA
 
 listaDeEntrevistados = []
-entrevistado = {"nome" : "","e": 0,"t": 0,"p": 0,"s": 0}
 
 
 def addEntrevistado():
-    pass
+    entrevistado = {"nome" : "","e": 0,"t": 0,"p": 0,"s": 0}
+# loop entre chaves e valores, usando o método:items()
+    for x,y in entrevistado.items():
+        entrevistado[x] = input(f" {x} :")
+    listaDeEntrevistados.append(entrevistado)
+pass
+
+
 
 def excluirEntrevistado():
     pass
@@ -16,3 +22,15 @@ def excluirEntrevistado():
 def pesquisarEntrevistado():
     pass
 
+def verLista():
+    pass
+
+
+addEntrevistado()
+print(listaDeEntrevistados)
+
+addEntrevistado()
+print(listaDeEntrevistados)
+
+addEntrevistado()
+print(listaDeEntrevistados)
