@@ -7,14 +7,18 @@ listaDeEntrevistados = []
 
 
 def addEntrevistado():
-    entrevistado = {"nome" : "","e": 0,"t": 0,"p": 0,"s": 0}
+    entrevistado = {"nome" : "","resultado":{}}
 # loop entre chaves e valores, usando o método:items()
     for x,y in entrevistado.items():
-        entrevistado[x] = input(f" {x} :")
-    listaDeEntrevistados.append(entrevistado)
+            if x == "nome":
+                entrevistado[x] = "ana" #input(f" {x} :")
+                entrevistado["resultado"] = {"e": 0,"t": 0,"p": 0,"s": 0}
+            else:
+                for z in y:
+                    entrevistado[x][z] =  int(input(f" {z} :"))         
+            pass
+    listaDeEntrevistados.append(entrevistado)          
 pass
-
-
 
 def excluirEntrevistado():
     pass
