@@ -1,41 +1,37 @@
-### O SISTEMA TEM QUE CRIA/EXCLUIR(TALVEZ UM CRUD) O ENTREVISTADO
-### O SISTEMA TEM QUE ARMAZENAR DADOS DAS 5 ENTREVISTA PARA CADA ENTREVISTADO (DICIONARIO)
-### O SISTEMA TEM QUE BUSCAR OS ENTREVISTADOS QUE TEM A NOTA IQUAL OU MAIOR PARA VAGA NOTA PARA VAGA PESQUESADA.
+### O SISTEMA TEM QUE CRIA/EXCLUIR(TALVEZ UM CRUD) O candidato
+### O SISTEMA TEM QUE ARMAZENAR DADOS DAS 5 ENTREVISTA PARA CADA candidato (DICIONARIO)
+### O SISTEMA TEM QUE BUSCAR OS candidatoS QUE TEM A NOTA IQUAL OU MAIOR PARA VAGA NOTA PARA VAGA PESQUESADA.
 ### MENU DE ESCOLHA
 
-listaDeEntrevistados = []
+listaDeCandidatos = []
 
 
-def addEntrevistado():
-    entrevistado = {"nome" : "","resultado":{}}
+def addCandidato():
+    candidato = {"nome" : "","resultado":{}}
 # loop entre chaves e valores, usando o método:items()
-    for x,y in entrevistado.items():
+    for x,y in candidato.items():
             if x == "nome":
-                entrevistado[x] = "ana" #input(f" {x} :")
-                entrevistado["resultado"] = {"e": 0,"t": 0,"p": 0,"s": 0}
+                #pega nome do candidato 
+                candidato[x] = input(f" {x} :")
+                candidato["resultado"] = {"e": 0,"t": 0,"p": 0,"s": 0}
             else:
                 for z in y:
-                    entrevistado[x][z] =  int(input(f" {z} :"))         
+                    candidato[x][z] =  int(input(f" {z} :"))         
             pass
-    listaDeEntrevistados.append(entrevistado)          
+    listaDeCandidatos.append(candidato)          
 pass
 
 
-def excluirEntrevistado():
+def excluirCandidato():
     pass
 
-def pesquisarEntrevistado():
+def pesquisarCandidato():
     pass
 
 def verLista():
     pass
 
 
-addEntrevistado()
-print(listaDeEntrevistados)
+addCandidato()
+print(listaDeCandidatos)
 
-addEntrevistado()
-print(listaDeEntrevistados)
-
-addEntrevistado()
-print(listaDeEntrevistados)
