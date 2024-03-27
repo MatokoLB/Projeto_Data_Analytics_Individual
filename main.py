@@ -37,10 +37,9 @@ def excluirCandidato():
         # criacao de nova lista interando sobre a antiga, sem o nome do usuario removido.
             listaDeCandidatos = [candidato for candidato in listaDeCandidatos if candidato["nome"] != nome]
             print("O Canditato foi excluido.")
-            break
         else:
             print("nao ha canditado com esse nome")
-            break 
+        
     pass
 
 
@@ -98,4 +97,6 @@ addCandidato()
 
 
 excluirCandidato()
+verLista()
+
 pesquisarCandidatoIdeal()
