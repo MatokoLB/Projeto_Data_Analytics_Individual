@@ -4,41 +4,32 @@
 ### MENU DE ESCOLHA
 
 # lista que ira receber os candidatos
-listaDeCandidatos = [] #[]
 
+listaDeCandidatos = [] #[]
+nomesTestes = ["entrevista","teste teórico","teste prático","soft skills"]
 
 def addCandidato():
-    candidato = {"nome" : "","resultado":{}}
-# loop entre chaves e valores, usando o método:items()
-    for x,y in candidato.items():
-            if x == "nome":
-                # pega nome do candidato 
-                candidato[x] = input(f" {x} :").lower()
-                # chave resultado acresentada automaticamente
-                candidato["resultado"] = {"e": 0,"t": 0,"p": 0,"s": 0}
+   
+    resultado = []
+    
+    nome = input(f"""Digite o nome do Candidato em: """).lower()
+    for x in nomesTestes:
+        nota = input(f"""Digite a nota em {x}: """).lower()
+        resultado.append(nota)
+    candidato = [nome] + resultado
 
-                # talvez add def verificar nome ja exitente:
-            else:
-                for z in y:
-                    candidato[x][z] =  int(input(f" {z} :")) 
-                # talvez add def verificar valores intevalo de 0 a 10:       
-            pass
     listaDeCandidatos.append(candidato)
-    print("Candidato adicionado")        
-pass
-
-
 
 def excluirCandidato():
-    global listaDeCandidatos
-    nome = input("digite o nome do candidato a ser excluido :").lower()
-    for candidatos in listaDeCandidatos:
-        if candidatos["nome"] == nome: 
-        # criacao de nova lista interando sobre a antiga, sem o nome do usuario removido.
-            listaDeCandidatos = [candidato for candidato in listaDeCandidatos if candidato["nome"] != nome]
-            print("O Canditato foi excluido.")
-        else:
-            print("nao ha canditado com esse nome")
+    # global listaDeCandidatos
+    # nome = input("digite o nome do candidato a ser excluido :").lower()
+    # for candidatos in listaDeCandidatos:
+    #     if candidatos["nome"] == nome: 
+    #     # criacao de nova lista interando sobre a antiga, sem o nome do usuario removido.
+    #         listaDeCandidatos = [candidato for candidato in listaDeCandidatos if candidato["nome"] != nome]
+    #         print("O Canditato foi excluido.")
+    #     else:
+    #         print("nao ha canditado com esse nome")
         
     pass
 
@@ -90,13 +81,3 @@ def verLista():
 pass
 
 
-verLista()
-
-addCandidato()
-addCandidato()
-
-
-excluirCandidato()
-verLista()
-
-pesquisarCandidatoIdeal()
