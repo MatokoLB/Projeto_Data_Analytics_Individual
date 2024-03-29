@@ -4,21 +4,21 @@
 ### MENU DE ESCOLHA
 
 # lista que ira receber os candidatos
-
 listaDeCandidatos = [] #[]
 nomesTestes = ["entrevista","teste teórico","teste prático","soft skills"]
 
 def addCandidato():
    
     resultado = []
-    
     nome = input(f"""Digite o nome do Candidato em: """).lower()
     for x in nomesTestes:
         nota = input(f"""Digite a nota em {x}: """).lower()
         resultado.append(nota)
-    candidato = [nome] + resultado
-
+    candidato = [nome] + [resultado]
     listaDeCandidatos.append(candidato)
+
+# addCandidato()
+# print(listaDeCandidatos)
 
 def excluirCandidato():
     # global listaDeCandidatos
@@ -30,10 +30,15 @@ def excluirCandidato():
     #         print("O Canditato foi excluido.")
     #     else:
     #         print("nao ha canditado com esse nome")
-        
-    pass
+    nome = input("digite o nome do candidato a ser excluido :").lower()
+    for candidato in listaDeCandidatos:
+        if nome in candidato:
+            indece = candidato.index(nome)
+            candidato.pop(indece + 1)
+            candidato.pop(indece)
 
-
+# excluirCandidato()
+print(listaDeCandidatos)
 
 def pesquisarCandidatoIdeal():
     listaDeAprovados = []
