@@ -4,46 +4,68 @@
 ### MENU DE ESCOLHA
 
 # lista que ira receber os candidatos
-listaDeCandidatos = [["ana",[0,0,0,0]],["jaoo",[0,0,0,0]]] #[]
+listaDeCandidatos = ["ana",[0,0,0,0]] #[]
+
+# listas de tipos de de testes
 nomesTestes = ["entrevista","teste teórico","teste prático","soft skills"]
 
 def addCandidato():
-    resultado = []
+    notas = []
 
     nome = input(f"""
-                 
-        Digite o nome do Candidato em: 
-                 
-                  """).lower()
+
+                  
+        Digite o nome do Candidato: """).lower()
+    
     #validaçao de entradas nome sem esta na lista
+    if any(nome == candidato for candidato in listaDeCandidatos):
+        print("ERRO !!! CANDIDATO JÁ EXITE NA LISTA.")
+        return addCandidato()
+    elif nome == "":
+       print("ERRO !!! CAMPO VAZIO.")
+       return addCandidato()
+    else:
+        print("CHECK OK, PROSSEGUINDO NO CADASTRO.>>>>>>")
+     
 
+    ### separa esse bloco para outra funcao:
     for x in nomesTestes:
-        
-        nota = int(input(f"""
-                         
+        while True:
+            try: # captura Erro nao deixando codigo quebra
+                nota = int(input(f"""
+                        
+                    Digite a nota em {x}: """))
+                
+                if  nota < 0 or nota > 10:  ### validaçao de entradas de 0 A 10
+                    print("ERRO !!! INSIRA UMA NOTA VÁLIDA (0-10).")
+                else:
+                    notas.append(nota)
+                    break
+            except ValueError:
+                print("ERRO !!! INSIRA UM VALOR NUMÉRICO")
 
-        Digite a nota em {x}: """))
-
-        ### validaçao de entradas de 0 A 10
-        if nota != int or nota < 0 or nota > 10:
-            print("ERRO !!! insira um Valor valido numero entre: 0-10")
-
-        resultado.append(nota)
-    candidato = [nome] + [resultado]
-    listaDeCandidatos.append(candidato)
+    ## adicionar candidato a lista
+    listaDeCandidatos.append([nome,notas])
 
 
 def excluirCandidato():
-    ## verifica se lista esta vazia 
+    # verifica se lista esta vazia 
 
-    nome = input("Digite o nome do candidato a ser excluido :").lower()
-    ## valida entrada vazia
+    nome = input(f"""
+
+                  
+        Digite o nome do Candidato em: """).lower()
+    
+    #validaçao de entradas nome sem esta na lista
+    if nome == "":
+       print("ERRO !!! CAMPO VAZIO.")
+       return excluirCandidato()
 
     for candidato in listaDeCandidatos:
         if nome in candidato:
             indece = candidato.index(nome)
-            candidato.pop(indece)  # Removendo o nome
-            if len(candidato) == 1:  # Se a lista de notas está vazia
+            candidato.pop(indece)  # removendo o nome
+            if len(candidato) == 1:  # se a lista de notas está vazia
                 listaDeCandidatos.remove(candidato)
             break
         else:
@@ -53,10 +75,10 @@ def excluirCandidato():
 
 def pesquisarCandidatoIdeal():
     #veificar se lista esta vazia
-
-
     Aprovados = []
     notasPesquisa = []
+
+
 
     for nota in nomesTestes:
         nota = int(input(f"insira de {nota}: "))
@@ -84,6 +106,8 @@ def pesquisarCandidatoIdeal():
             print(canditato)
     else:
         print("ninguem passou :( ")
+
+
 
 
 def verLista():
