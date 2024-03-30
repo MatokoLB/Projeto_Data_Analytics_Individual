@@ -4,40 +4,57 @@
 ### MENU DE ESCOLHA
 
 # lista que ira receber os candidatos
-listaDeCandidatos = [[],[]] #[]
+listaDeCandidatos = [["ana",[0,0,0,0]],["jaoo",[0,0,0,0]]] #[]
 nomesTestes = ["entrevista","teste teórico","teste prático","soft skills"]
 
 def addCandidato():
     resultado = []
+
     nome = input(f"""
                  
-                 Digite o nome do Candidato em: 
+        Digite o nome do Candidato em: 
                  
-                 """).lower()
+                  """).lower()
+    #validaçao de entradas nome sem esta na lista
 
     for x in nomesTestes:
+        
         nota = int(input(f"""
                          
-                        Digite a nota em {x}: 
-                         
-                         """))
+
+        Digite a nota em {x}: """))
+
+        ### validaçao de entradas de 0 A 10
+        if nota != int or nota < 0 or nota > 10:
+            print("ERRO !!! insira um Valor valido numero entre: 0-10")
+
         resultado.append(nota)
     candidato = [nome] + [resultado]
     listaDeCandidatos.append(candidato)
 
 
 def excluirCandidato():
+    ## verifica se lista esta vazia 
+
     nome = input("Digite o nome do candidato a ser excluido :").lower()
+    ## valida entrada vazia
+
     for candidato in listaDeCandidatos:
         if nome in candidato:
             indece = candidato.index(nome)
-            candidato.pop(indece + 1)
-            candidato.pop(indece)
+            candidato.pop(indece)  # Removendo o nome
+            if len(candidato) == 1:  # Se a lista de notas está vazia
+                listaDeCandidatos.remove(candidato)
+            break
+        else:
+            print(f"""Candidato não Encontrado""")
 
-listaDeCandidatos = [x for x in listaDeCandidatos if x != []]
 
 
 def pesquisarCandidatoIdeal():
+    #veificar se lista esta vazia
+
+
     Aprovados = []
     notasPesquisa = []
 
@@ -46,11 +63,10 @@ def pesquisarCandidatoIdeal():
         notasPesquisa.append(nota)
 
     for canditato in listaDeCandidatos:
-        if canditato != []:
-            print(canditato)
-            notasCandidato = canditato[1]
-            print(canditato[1])
-            qualificado = True
+        print(canditato)
+        notasCandidato = canditato[1]
+        print(canditato[1])
+        qualificado = True
             
             
     for notasCandidato,notasPesquisa in zip(notasCandidato,notasPesquisa):
@@ -88,7 +104,7 @@ while True:
         [4]- VER LISTA              [5]- OPÇÕES AUTOMAÇÃO       [6]- CRÉDITOS        
                                                                                                   
                                                                                            
-                                                                                           [E]-SAIR
+                                                                                           [7]-SAIR
     #################################################################################################  
                     """)
     
@@ -107,6 +123,20 @@ while True:
     elif opcoes == "6":
         pass
     elif opcoes == "7":
+        print(f"""
+              
+    #################################################################################################                
+
+              
+
+
+                            *FINALIZANDO OPERAÇÂO* - OBRIGADO, VOLTE SEMPRE.
+
+
+             
+              
+    ################################################################################################# 
+                  """)
         exit()
     else:
         pass
