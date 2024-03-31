@@ -4,16 +4,13 @@
 ### MENU DE ESCOLHA
 
 # lista que ira receber os candidatos
-listaDeCandidatos = ["ana",[0,0,0,0]] #[]
+listaDeCandidatos = [['ana',[10, 3, 8, 5]],['jana',[10, 10, 4, 5]],['gil',[10, 7, 4, 5]]] #[]
 
 # listas de tipos de de testes
-nomesTestes = ["entrevista","teste teórico","teste prático","soft skills"]
+nomesTestes = ["entrevista","teste teórico","prático teste ","soft skills"]
 
-def addCandidato():
-    notas = []
-
+def addCandidato():    
     nome = input(f"""
-
                   
         Digite o nome do Candidato: """).lower()
     
@@ -27,8 +24,102 @@ def addCandidato():
     else:
         print("CHECK OK, PROSSEGUINDO NO CADASTRO.>>>>>>")
      
+    notas= []    
+    pegaNotas(notas)
 
-    ### separa esse bloco para outra funcao:
+     ## adicionar candidato a lista
+    listaDeCandidatos.append([nome,notas])
+   
+
+def excluirCandidato():
+    # verifica se lista esta vazia 
+    
+
+
+    nome = input(f"""
+
+                  
+        Digite o nome do Candidato em: """).lower()
+    
+    #validaçao de entradas nome sem esta na lista
+    if nome == "":
+       print("ERRO !!! CAMPO VAZIO.")
+       return excluirCandidato()
+
+    for candidato in listaDeCandidatos:
+        print(candidato)
+        if nome in candidato:
+                listaDeCandidatos.remove(candidato) 
+                print("CHECK OK, CANDIDATO REMOVIDO")
+                break
+    else:
+        print("CANDIDATO NAO ENCONTRADO")
+    
+
+
+def pesquisarCandidatoIdeal():
+    #veificar se lista esta vazia
+    if listaDeCandidatos == []:
+       print("ERRO !!! LISTA CANDIDATOS VAZIA")
+       return
+    
+    Aprovados = []
+
+    notasPesquisa= []
+    pegaNotas(notasPesquisa)
+
+    for canditato in listaDeCandidatos:
+        notasCandidato = canditato[1]
+        qualificado = True            
+            
+    for notasCandidato,notasPesquisa in zip(notasCandidato,notasPesquisa):
+        if notasCandidato < notasPesquisa:
+            qualificado = False
+            break
+
+    if qualificado:
+        Aprovados.append(canditato)  
+
+    if Aprovados:
+        print(f"candidatos aprovados")
+        for candidatos in Aprovados:
+            print(candidatos)
+    else:
+        print("ninguem passou :( ")
+
+
+def verLista():
+
+    if listaDeCandidatos == []:
+        print("ERRO !!! LISTA CANDIDATOS VAZIA")
+    
+    for canditato in listaDeCandidatos:
+        notasCandidatoStr = [str(x) for x in canditato[1]]
+        # print(notasCandidatoStr)
+            
+        letraEmNomeTestes = [letra[0] for letra in nomesTestes]
+    # print(letraEmNomeTestes)
+    
+        letraNota = zip(letraEmNomeTestes,notasCandidatoStr)
+        listaLetraNotas = "_".join(letra + nota for letra,nota in letraNota)
+     
+        print(F""" 
+           {str(canditato[0])}___{listaLetraNotas}""")
+     
+    
+    return
+    
+
+
+
+
+
+
+pass
+
+
+
+def pegaNotas(notas):
     for x in nomesTestes:
         while True:
             try: # captura Erro nao deixando codigo quebra
@@ -44,75 +135,8 @@ def addCandidato():
             except ValueError:
                 print("ERRO !!! INSIRA UM VALOR NUMÉRICO")
 
-    ## adicionar candidato a lista
-    listaDeCandidatos.append([nome,notas])
+    return notas
 
-
-def excluirCandidato():
-    # verifica se lista esta vazia 
-
-    nome = input(f"""
-
-                  
-        Digite o nome do Candidato em: """).lower()
-    
-    #validaçao de entradas nome sem esta na lista
-    if nome == "":
-       print("ERRO !!! CAMPO VAZIO.")
-       return excluirCandidato()
-
-    for candidato in listaDeCandidatos:
-        if nome in candidato:
-            indece = candidato.index(nome)
-            candidato.pop(indece)  # removendo o nome
-            if len(candidato) == 1:  # se a lista de notas está vazia
-                listaDeCandidatos.remove(candidato)
-            break
-        else:
-            print(f"""Candidato não Encontrado""")
-
-
-
-def pesquisarCandidatoIdeal():
-    #veificar se lista esta vazia
-    Aprovados = []
-    notasPesquisa = []
-
-
-
-    for nota in nomesTestes:
-        nota = int(input(f"insira de {nota}: "))
-        notasPesquisa.append(nota)
-
-    for canditato in listaDeCandidatos:
-        print(canditato)
-        notasCandidato = canditato[1]
-        print(canditato[1])
-        qualificado = True
-            
-            
-    for notasCandidato,notasPesquisa in zip(notasCandidato,notasPesquisa):
-        if notasCandidato < notasPesquisa:
-            qualificado = False
-            print("off")
-            break
-
-    if qualificado:
-        Aprovados.append(canditato)  
-
-    if Aprovados:
-        print(f"candidatos aprovados")
-        for candidatos in Aprovados:
-            print(canditato)
-    else:
-        print("ninguem passou :( ")
-
-
-
-
-def verLista():
-    print(listaDeCandidatos)
-pass
 
 while True:
     opcoes = input (F"""
@@ -122,10 +146,10 @@ while True:
     #################################################################################################                
                                         
                     
-        [1]- ADICIONAR CANDIDATO    [2]- EXCLUIR CANDIDATO      [3]- APLICAR VAGA A CANDIDATO
+        [1]- ADICIONAR CANDIDATO  [2]- EXCLUIR CANDIDATO       [3]- APLICAR VAGA A CANDIDATO
                     
         
-        [4]- VER LISTA              [5]- OPÇÕES AUTOMAÇÃO       [6]- CRÉDITOS        
+        [4]- VER LISTA            [5]- AUTOMAÇÃO DE CADRASTO   [6]- CRÉDITOS        
                                                                                                   
                                                                                            
                                                                                            [7]-SAIR
