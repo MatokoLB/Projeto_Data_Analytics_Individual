@@ -55,7 +55,6 @@ def excluirCandidato():
        return excluirCandidato()
 
     for candidato in listaDeCandidatos:
-        print(candidato)
         if nome in candidato:
                 listaDeCandidatos.remove(candidato) 
                 print(F"""
@@ -112,13 +111,8 @@ def verLista(lista,texto):
         # print(letraEmNomeTestes)
         letraNota = zip(letraEmNomeTestes,notasCandidatoStr)
         listaLetraNotas = "_".join(letra + nota for letra,nota in letraNota)
-     
-        # print(F""" 
-        #    {str(canditato[0])}___{listaLetraNotas}""")
-        
+
         listaDeCandidatosFormatada.append([canditato[0],listaLetraNotas])
-    
-    print(listaDeCandidatosFormatada)
     while True:
         print(f''' 
         #########################################################################################################      
@@ -173,8 +167,8 @@ def automacaoCadrasto():
                     LISTA NÃO ESTA VAZIA""")
         else:
             listaDeCandidatos = [['ana',[10, 10, 10, 10]],['jana',[5, 10, 4, 5]],
-                                 ['gil',[10, 7, 4, 5]],['thales',[8, 2, 3, 1]],
-                                 ['maria',[3, 6, 3, 6]],['jubirildo',[7, 7, 6, 3]],
+                                 ['karen',[10, 7, 4, 5]],['guilhemer',[8, 2, 3, 1]],
+                                 ['beatriz',[3, 6, 3, 6]],['jubirildo',[7, 7, 6, 3]],
                                  ['oliver',[8, 8, 9, 7]],['lucas',[1, 4, 8, 2]]]
             print(f"""
                     LISTA PRENCHIDA """)
