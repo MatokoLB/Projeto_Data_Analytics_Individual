@@ -4,76 +4,187 @@
 ### MENU DE ESCOLHA
 
 # lista que ira receber os candidatos
-listaDeCandidatos = [[],['ana', [1, 10, 10, 10]]] #[]
-nomesTestes = ["entrevista","teste teórico","teste prático","soft skills"]
+listaDeCandidatos = [['ana',[10, 3, 8, 5]],['jana',[10, 10, 4, 5]],['gil',[10, 7, 4, 5]]] #[]
 
-def addCandidato():
-    resultado = []
-    nome = input(f"""Digite o nome do Candidato em: """).lower()
-    for x in nomesTestes:
-        nota = int(input(f"""Digite a nota em {x}: """))
-        resultado.append(nota)
-    candidato = [nome] + [resultado]
-    listaDeCandidatos.append(candidato)
+# listas de tipos de de testes
+nomesTestes = ["entrevista","teste teórico","prático teste ","soft skills"]
 
+def addCandidato():    
+    nome = input(f"""
+                  
+        Digite o nome do Candidato: """).lower()
+    
+    #validaçao de entradas nome sem esta na lista
+    if any(nome == candidato for candidato in listaDeCandidatos):
+        print("ERRO !!! CANDIDATO JÁ EXITE NA LISTA.")
+        return addCandidato()
+    elif nome == "":
+       print("ERRO !!! CAMPO VAZIO.")
+       return addCandidato()
+    else:
+        print("CHECK OK, PROSSEGUINDO NO CADASTRO.>>>>>>")
+     
+    notas= []    
+    pegaNotas(notas)
 
-# addCandidato()
-# print(listaDeCandidatos)
+     ## adicionar candidato a lista
+    listaDeCandidatos.append([nome,notas])
+   
 
 def excluirCandidato():
-    nome = input("digite o nome do candidato a ser excluido :").lower()
-    for candidato in listaDeCandidatos:
-        if nome in candidato:
-            indece = candidato.index(nome)
-            candidato.pop(indece + 1)
-            candidato.pop(indece)
+    # verifica se lista esta vazia 
+    
 
-# excluirCandidato()
-# print(listaDeCandidatos)
+
+    nome = input(f"""
+
+                  
+        Digite o nome do Candidato em: """).lower()
+    
+    #validaçao de entradas nome sem esta na lista
+    if nome == "":
+       print("ERRO !!! CAMPO VAZIO.")
+       return excluirCandidato()
+
+    for candidato in listaDeCandidatos:
+        print(candidato)
+        if nome in candidato:
+                listaDeCandidatos.remove(candidato) 
+                print("CHECK OK, CANDIDATO REMOVIDO")
+                break
+    else:
+        print("CANDIDATO NAO ENCONTRADO")
+    
+
 
 def pesquisarCandidatoIdeal():
+    #veificar se lista esta vazia
+    if listaDeCandidatos == []:
+       print("ERRO !!! LISTA CANDIDATOS VAZIA")
+       return
+    
     Aprovados = []
-    notasPesquisa = []
 
-    for nota in nomesTestes:
-        nota = int(input(f"insira de {nota}: "))
-        notasPesquisa.append(nota)
+    notasPesquisa= []
+    pegaNotas(notasPesquisa)
 
     for canditato in listaDeCandidatos:
-        if canditato != []:
-            print(canditato)
-            notasCandidato = canditato[1]
-            print(canditato[1])
-            qualificado = True
-    
+        notasCandidato = canditato[1]
+        qualificado = True            
+            
     for notasCandidato,notasPesquisa in zip(notasCandidato,notasPesquisa):
         if notasCandidato < notasPesquisa:
             qualificado = False
-            print("off")
             break
-    
+
     if qualificado:
-        Aprovados.append(canditato)
+        Aprovados.append(canditato)  
 
     if Aprovados:
         print(f"candidatos aprovados")
         for candidatos in Aprovados:
-            print(canditato)
+            print(candidatos)
     else:
         print("ninguem passou :( ")
 
 
-        
-
-
-pesquisarCandidatoIdeal()
-
-
-pass
-        
-
 def verLista():
-    print(listaDeCandidatos)
+
+    if listaDeCandidatos == []:
+        print("ERRO !!! LISTA CANDIDATOS VAZIA")
+    
+    for canditato in listaDeCandidatos:
+        notasCandidatoStr = [str(x) for x in canditato[1]]
+        # print(notasCandidatoStr)
+            
+        letraEmNomeTestes = [letra[0] for letra in nomesTestes]
+    # print(letraEmNomeTestes)
+    
+        letraNota = zip(letraEmNomeTestes,notasCandidatoStr)
+        listaLetraNotas = "_".join(letra + nota for letra,nota in letraNota)
+     
+        print(F""" 
+           {str(canditato[0])}___{listaLetraNotas}""")
+     
+    
+    return
+    
+
+
+
+
+
+
 pass
 
 
+
+def pegaNotas(notas):
+    for x in nomesTestes:
+        while True:
+            try: # captura Erro nao deixando codigo quebra
+                nota = int(input(f"""
+                        
+                    Digite a nota em {x}: """))
+                
+                if  nota < 0 or nota > 10:  ### validaçao de entradas de 0 A 10
+                    print("ERRO !!! INSIRA UMA NOTA VÁLIDA (0-10).")
+                else:
+                    notas.append(nota)
+                    break
+            except ValueError:
+                print("ERRO !!! INSIRA UM VALOR NUMÉRICO")
+
+    return notas
+
+
+while True:
+    opcoes = input (F"""
+    ####################################### S I S T E M A ###########################################      
+                                    bem-vindo ao #COMPATIBILITY#                  
+                                        SELECIONE UMA OPÇÃO
+    #################################################################################################                
+                                        
+                    
+        [1]- ADICIONAR CANDIDATO  [2]- EXCLUIR CANDIDATO       [3]- APLICAR VAGA A CANDIDATO
+                    
+        
+        [4]- VER LISTA            [5]- AUTOMAÇÃO DE CADRASTO   [6]- CRÉDITOS        
+                                                                                                  
+                                                                                           
+                                                                                           [7]-SAIR
+    #################################################################################################  
+                    """)
+    
+    if opcoes == "1":
+        addCandidato()
+        pass
+    elif opcoes == "2":
+        excluirCandidato()
+        pass
+    elif opcoes == "3":
+        pesquisarCandidatoIdeal()
+    elif opcoes == "4":
+        verLista()
+    elif opcoes == "5":
+       pass
+    elif opcoes == "6":
+        pass
+    elif opcoes == "7":
+        print(f"""
+              
+    #################################################################################################                
+
+              
+
+
+                            *FINALIZANDO OPERAÇÂO* - OBRIGADO, VOLTE SEMPRE.
+
+
+             
+              
+    ################################################################################################# 
+                  """)
+        exit()
+    else:
+        pass
