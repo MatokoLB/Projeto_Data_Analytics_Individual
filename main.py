@@ -5,7 +5,6 @@
 
 # lista que ira receber os candidatos
 listaDeCandidatos = [] #[]
-
 # listas de tipos de de testes / essa lista define o numero de notas que canditado vai ter.
 nomesTestes = ["entrevista","teste teórico","prático teste ","soft skills"]
 
@@ -66,7 +65,6 @@ def excluirCandidato():
         print(F"""
                 CANDIDATO NÃO ENCONTRADO.""")
     
-
 
 def pesquisarCandidatoIdeal():
     # Verificar se lista está vazia
@@ -133,6 +131,7 @@ def verLista(lista,texto):
         x = input(f"""                                                                                  [7]-SAIR """)
         if x == "7":
            break
+
 
 def pegaNotas(notas):
     for x in nomesTestes:
@@ -225,7 +224,33 @@ while True:
     elif opcoes == "5":
         automacaoCadrasto()
     elif opcoes == "6":
-        pass
+     x =  input(f"""
+              
+    ██████████████████████████████████████████████████████████████████████████████████████████████████████████            
+
+           MMM.           .MMM
+           MMMMMMMMMMMMMMMMMMM
+           MMMMMMMMMMMMMMMMMMM               PROJETO DE DESENVOLVIDO POR @MATOKOLB:
+          MMMMMMMMMMMMMMMMMMMMM                 https://github.com/MatokoLB?
+        MMMMMMMMMMMMMMMMMMMMMMMM                 
+         MMMMMMMMMMMMMMMMMMMMMMM     
+        MMMM::- -:::::::- -::MMMM                 
+         MM~:~ 00~:::::~ 00~:~MM
+    .. MMMMM::.00:::+:::.00::MMMMM ..        PROGRAMADORES CARIOCAS e CNseg - DATA ANALITYS
+          .MM::::: ._. :::::MM.                 SENAC/RESILIA
+             MMMM;:::::;MMMM
+      -MM        MMMMMMM                              
+      ^  M+     MMMMMMMMM                    INSTRUTOR William Firmino:
+          MMMMMMM MM MM MM                      https://github.com/williamfirmino92      
+               MM MM MM MM                      https://www.linkedin.com/in/william-firmino-87a2ba80  
+               MM MM MM MM                
+            .~~MM~MM~MM~MM~~.
+         ~~~~MM:~MM~~~MM~:MM~~~~
+        ~~~~~~==~==~~~==~==~~~~~~
+         ~~~~~~==~==~==~==~~~~~~
+                                                                                                    [N]- SAIR
+    ██████████████████████████████████████████████████████████████████████████████████████████████████████████
+                  """)
     elif opcoes == "7":
         print(f"""
               
