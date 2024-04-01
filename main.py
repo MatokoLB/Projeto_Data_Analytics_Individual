@@ -233,7 +233,7 @@ while True:
          MMMMMMMMMMMMMMMMMMMMMMM     
         MMMM::- -:::::::- -::MMMM                 
          MM~:~ 00~:::::~ 00~:~MM
-    .. MMMMM::.00:::+:::.00::MMMMM ..        PROGRAMADORES CARIOCAS e CNseg - DATA ANALITYS
+    .. MMMMM::.00:::+:::.00::MMMMM ..        PROGRAMADORES CARIOCAS e CNseg - DATA ANALYTICS
           .MM::::: ._. :::::MM.                 SENAC/RESILIA
              MMMM;:::::;MMMM
       -MM        MMMMMMM                              
