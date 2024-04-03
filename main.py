@@ -1,4 +1,5 @@
-### O SISTEMA TEM QUE CRIA/EXCLUIR(TALVEZ UM CRUD) 
+import time
+### O SISTEMA TEM QUE CRIA/EXCLUIR
 ### O SISTEMA TEM QUE ARMAZENAR DADOS DAS 4 ENTREVISTA PARA CADA candidato 
 ### O SISTEMA TEM QUE BUSCAR OS candidatoS QUE TEM A NOTA IQUAL OU MAIOR PARA VAGA NOTA PARA VAGA PESQUESADA.
 ### MENU DE ESCOLHA
@@ -30,9 +31,8 @@ def addCandidato():
      
     notas= []    
     pegaNotas(notas)
-     ## adicionar candidato a lista
-     
-    listaDeCandidatos.append([nome,notas])
+
+    listaDeCandidatos.append([nome,notas]) ## adicionar candidato a lista
     print(f""" 
                     CHECK OK, CANDIDATO {nome.upper()} CADRASTADO.>>>>>>""" )
    
@@ -68,7 +68,8 @@ def excluirCandidato():
 def pesquisarCandidatoIdeal():
     # Verificar se lista está vazia
     if not listaDeCandidatos:
-        print("ERRO !!! LISTA DE CANDIDATOS VAZIA.")
+        print(f"""
+              ERRO !!! LISTA DE CANDIDATOS VAZIA.""")
         return
 
     notasPesquisa = []
@@ -104,11 +105,9 @@ def verLista(lista,texto):
     
     for canditato in lista:
         notasCandidatoStr = [str(x) for x in canditato[1]]
-        # print(notasCandidatoStr)
             
         letraEmNomeTestes = [letra[0] for letra in nomesTestes]
-        
-        # print(letraEmNomeTestes)
+    
         letraNota = zip(letraEmNomeTestes,notasCandidatoStr)
         listaLetraNotas = "_".join(letra + nota for letra,nota in letraNota)
 
@@ -122,18 +121,19 @@ def verLista(lista,texto):
             print(f""" 
                   {canditado[0]}                                                {canditado[1]}
         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░""")
-        x = input(f"""                                                                                  [7]-SAIR """)
+        x = input(f"""       
+                                                                                                        [7]-SAIR """)
         if x == "7":
            break
 
 
 def pegaNotas(notas):
-    for x in nomesTestes:
+    for nome in nomesTestes:
         while True:
             try: # captura Erro nao deixando codigo quebra
                 nota = int(input(f"""
                         
-                    Digite a nota em {x}: """))
+                    Digite a nota em {nome}: """))
                 
                 if  nota < 0 or nota > 10:  ### validaçao de entradas de 0 A 10
                     print(f"""
@@ -255,8 +255,10 @@ while True:
  
               
 
+
               
 
+              
 
 
                                 *FINALIZANDO OPERAÇÃO* - OBRIGADO, VOLTE SEMPRE.
@@ -266,10 +268,13 @@ while True:
               
 
 
+              
+
              
               
     ██████████████████████████████████████████████████████████████████████████████████████████████████████████
                   """)
+        time.sleep(4)
         exit()
     else:
         pass
